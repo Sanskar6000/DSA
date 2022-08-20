@@ -3,7 +3,7 @@ for(int i = 0; i < V; i++) {
         queue q;
         q.push(i);
         vis[i] = 1;
-
+        
         while(!q.empty()) {
             node = q.front();
             q.pop();
