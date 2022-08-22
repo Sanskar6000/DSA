@@ -1,3 +1,4 @@
+//Use 3 Pointers >>>>> At the end, make head = prev
 //first point next, then do for previous then update prev and next
   struct ListNode {
       int val;
