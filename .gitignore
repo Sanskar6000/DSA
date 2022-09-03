@@ -4,7 +4,4 @@ CSES.cpp
 test.cpp
 *.suo
 *.user
-_ReSharper.*
-bin
-obj
-packages
+*.bin
