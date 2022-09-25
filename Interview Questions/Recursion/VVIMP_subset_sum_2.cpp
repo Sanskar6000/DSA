@@ -42,3 +42,23 @@ TC - 2^N * k
 
 //?Every time we will call a recursive function
 //?We will generate lists of size 0, 1, 2,......., n 
+//Carry an empty data structure
+//Generate a list of size one
+vector<vector<int>> ans;
+    
+void f(int ind,vector<int> &nums, vector<int> &temp) {
+    ans.push_back(temp);
+    for(int i = ind; i < nums.size(); i++) {
+        if(i != ind && nums[i] == nums[i - 1]) continue;
+        temp.push_back(nums[i]);
+        f(i + 1, nums, temp);
+        temp.pop_back();
+    }
+}
+    
+vector<vector<int>> subsets(vector<int>& nums) {
+    vector<int> temp;
+    f(0, nums, temp);
+        
+    return ans;
+}
