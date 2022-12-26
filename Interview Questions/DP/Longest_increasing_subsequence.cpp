@@ -26,3 +26,26 @@ int lengthOfLIS(vector<int>& nums) {
         
     return length(nums, 0, -1, dp);
 }
+
+//O(N^2) Solution
+int longestSubsequence(int n, int a[])
+{
+    vector<int> dp(n, 1);
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < i; j++) {
+            if(a[j] < a[i]) {
+                dp[i] =  max(dp[i], 1 + dp[j]);
+            }
+        }
+    }
+}
+
+    int ans = -1;
+    for(int i = 0; i < n; i++) {
+        ans = max(ans, dp[i]);
+    }
+        
+    return ans;
+}
+
+//O(NlogN) Solution

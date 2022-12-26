@@ -1,8 +1,9 @@
- void dfs(vector<int> &vis, vector<int> adj[], int source) {
-        vis[source] = 1;
-        for(auto i : adj[source]) {
-            if(!vis[i]) {
-                dfs(vis, adj, i);
-            }
-        }
+class DFS {   
+void dfs(int s) {
+    if(vis[s]) return;
+    vis[s] = true;
+    for(auto u : adj[s]) {
+        dfs(u);
     }
+}
+};

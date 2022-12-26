@@ -1,0 +1,12 @@
+1. Always derive a state for final answer
+2. Recurrence relation will be in the form f(n) = f(n - 1) not in the form f(n) = f(n + 1)
+3. Always search for base case when i = 0 or j = 0
+4. For filling the table involving final answer as f(0, n - 1)...Fill the table diagonally
+Gap = 1: (0, 1) (1, 2) (2, 3) (3, 4)
+
+Gap = 2: (0, 2) (1, 3) (2, 4)
+
+Gap = 3: (0, 3) (1, 4)
+
+Gap = 4: (0, 4)
+Our Final answer must be filled last as we are constructing the solution

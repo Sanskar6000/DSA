@@ -1,20 +1,22 @@
-for(int i = 0; i < V; i++) {
-    if(!vis[i]) {
-        queue q;
-        q.push(i);
-        vis[i] = 1;
-        
-        while(!q.empty()) {
-            node = q.front();
-            q.pop();
-            bfs.push_back(node);
+//BFS goes level wise hence we can calculate distance
 
-            for(auto it : adj[node]) {
-                if(!vis[it]) {
-                    q.push(it);
-                    vis[it] = 1;
-                }
-            }
+class BFS{
+    queue<int> q;
+    bool vis[N];
+    int dis[N];
+
+    vis[x] = true;
+    dis[x] = 0;
+    q.push(x);
+    while(!q.empty()) {
+        int s = q.front();
+        q.pop();
+
+        for(auto u : adj[s]) {
+            if(visited[u]) continue;
+            visited[u] = true;
+            distance[u] = distance[s] + 1;
+            q.push(u);
         }
     }
-}
+};
