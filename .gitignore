@@ -5,3 +5,6 @@ test.cpp
 *.suo
 *.user
 *.bin
+*.exe
+test2.cpp
+test3.cpp
