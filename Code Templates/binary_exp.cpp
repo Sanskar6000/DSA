@@ -6,20 +6,20 @@ class BinaryExponentiation {
 
     public:
     //If a, b, mod <= 1e9
-    ll myPow(ll a, ll b) {
-        ll ans = 1;
-        while(b) {
-            if(b % 2) {
-                ans = (ans * a) % mod;
-                b--;
-            }
-            else {
-                a = (a * a) % mod;
-                b = b/2;
-            }
+ll myPow(ll a, ll b) {
+    ll ans = 1;
+    while(b) {
+        if(b % 2) {
+            ans = (ans * a) % mod;
+            b--;
         }
-        return ans;
+        else {
+            a = (a * a) % mod;
+            b = b/2;
+        }
     }
+    return ans;
+}
 
     //If a <= 10^18
     //a^b % mod = ((a % mod)^ b) % mod    
