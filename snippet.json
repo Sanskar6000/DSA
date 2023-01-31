@@ -1,0 +1,28 @@
+{
+  "boilerplate": {
+    "prefix": "boilerplate code",
+    "body": [
+      "#include<bits/stdc++.h>",
+      "using namespace std;\n",
+      "#define ll long long\n",
+      "#ifndef ONLINE_JUDGE",
+      "\t#include \"debug.h\"",
+      "#else",
+      "\t#define dbg(x...)",
+      "#endif\n",
+      "void solve() {",
+      "\t$1",
+      "}\n",
+      "int main(){",
+      "\tios_base::sync_with_stdio(false);",
+      "\tcin.tie(NULL);\n",
+      "\tint t = 1;",
+      "\tcin >> t;",
+      "\twhile(t--) {",
+      "\t\tsolve();",
+      "\t}",
+      "}"
+    ],
+    "description": "This is a boilerplate"
+  }
+}
