@@ -1,128 +1,66 @@
-// C++ program to find the
-// product of lengths of cycle
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-const int N = 100000;
 
-// variables to be used
-// in both functions
-vector<int> graph[N];
+#define ll long long
 
-// Function to mark the vertex with
-// different colors for different cycles
-void dfs_cycle(int u, int p, int color[],
-			int mark[], int par[], int& cyclenumber)
-{
+#ifndef ONLINE_JUDGE
+    #include "debug.h"
+#else
+    #define dbg(x...)
+#endif
 
-	// already (completely) visited vertex.
-	if (color[u] == 2) {
-		return;
-	}
+void solve() {
+    ll n, m;
+    cin >> n >> m;
 
-	// seen vertex, but was not completely
-	// visited -> cycle detected.
-	// backtrack based on parents to find
-	// the complete cycle.
-	if (color[u] == 1) {
+    vector<ll> a(n);
+    map<int, int> mp;
+    set<ll> st;
+    for(auto &i : a) {
+        cin >> i;
+        st.insert(i);
+        mp[i] = m + 1;
+    } 
+    
+    ll ans = n * ((m * (m + 1))/2);
+    // ll ans = 0;
 
-		cyclenumber++;
-		int cur = p;
-		mark[cur] = cyclenumber;
+    set<ll> s;
+    set<ll> sz;
+    for(int i = 1; i <= m; i++) {
+        ll l, r;
+        cin >> l >> r;
+        ll sz = s.size();
 
-		// backtrack the vertex which are
-		// in the current cycle thats found
-		while (cur != u) {
-			cur = par[cur];
-			mark[cur] = cyclenumber;
-		}
-		return;
-	}
-	par[u] = p;
-
-	// partially visited.
-	color[u] = 1;
-
-	// simple dfs on graph
-	for (int v : graph[u]) {
-
-		// if it has not been visited previously
-		if (v == par[u]) {
-			continue;
-		}
-		dfs_cycle(v, u, color, mark, par, cyclenumber);
-	}
-
-	// completely visited.
-	color[u] = 2;
+        s.insert(l);
+       
+        // if(mp.find(r) == mp.end()) ans += ((i * (i + 1))/2);
+        // else ans += ((i * (i + 1))/2) - mp[r];
+        if(s.size() > sz) {
+            if(mp.find(r) == mp.end()) ans += ((i * (i + 1))/2) - mp[r];
+            else ans += ((i * (i + 1))/2) - mp[r];
+        }
+        else {
+            if(mp.find(r) == mp.end()) ans += ((i * (i - 1))/2) - mp[r] - n; 
+            ans += ((i * (i - 1))/2) + 1 - mp[r] - n;
+        }
+        if(mp.find(r) == mp.end()) mp[r] = m - i;
+        else mp[r] += (m - i);
+        mp[a[l - 1]] -= (m - i);
+        a[l - 1] = r;
+        // dbg(mp);
+        if(mp[a[l - 1]] <= 0) mp.erase(mp.find(a[l - 1]));
+    }
+    cout << ans << '\n';
 }
 
-// add the edges to the graph
-void addEdge(int u, int v)
-{
-	graph[u].push_back(v);
-	graph[v].push_back(u);
-}
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-// Function to print the cycles
-int productLength(int edges, int mark[], int& cyclenumber)
-{
-	unordered_map<int, int> mp;
-
-	// push the edges that into the
-	// cycle adjacency list
-	for (int i = 1; i <= edges; i++) {
-		if (mark[i] != 0)
-			mp[mark[i]]++;
-	}
-	int cnt = 1;
-
-	// product all the length of cycles
-	for (int i = 1; i <= cyclenumber; i++) {
-		cnt = cnt * mp[i];
-	}
-	if (cyclenumber == 0)
-		cnt = 0;
-
-	return cnt;
-}
-
-// Driver Code
-int main()
-{
-
-	// add edges
-	addEdge(1, 2);
-	addEdge(2, 3);
-	addEdge(3, 4);
-	addEdge(4, 6);
-	addEdge(4, 7);
-	addEdge(5, 6);
-	addEdge(3, 5);
-	addEdge(7, 8);
-	addEdge(6, 10);
-	addEdge(5, 9);
-	addEdge(10, 11);
-	addEdge(11, 12);
-	addEdge(11, 13);
-	addEdge(12, 13);
-
-	// arrays required to color the
-	// graph, store the parent of node
-	int color[N];
-	int par[N];
-
-	// mark with unique numbers
-	int mark[N];
-
-	// store the numbers of cycle
-	int cyclenumber = 0;
-	int edges = 13;
-
-	// call DFS to mark the cycles
-	dfs_cycle(1, 0, color, mark, par, cyclenumber);
-
-	// function to print the cycles
-	cout << productLength(edges, mark, cyclenumber);
-
-	return 0;
+    int t = 1;
+    cin >> t;
+    while(t--) {
+        solve();
+    }
 }

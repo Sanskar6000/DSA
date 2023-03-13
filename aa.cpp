@@ -13,13 +13,18 @@ void solve() {
     int n, x, p;
     cin >> n >> x >> p;
 
-    for(int i = 1; i <= min(2*n, p); i++) {
-        if((x + (i * (i + 1)/2)) % n == 0) {
-            cout <<"YES\n";
+    set<int> s;
+    for(int i = 1; i <= 2 * n; i++) {
+        s.insert((x + i) % n);
+        x += i;
+    }
+    dbg(s);
+    for(auto it : s) {
+        if(it == 0) {
+            cout << "YES\n";
             return;
         }
     }
-
     cout << "NO\n";
 }
 
