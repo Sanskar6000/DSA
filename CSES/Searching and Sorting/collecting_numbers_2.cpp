@@ -1,35 +1,46 @@
-//Intuition: For a(0.....i) it will have the sum from a[0] to a[0] + a[1] + ..... + a[i]
+//Ans -> number of inversions
 #include<bits/stdc++.h>
 using namespace std;
 
-#define ll long long int
-const int mod = 1e9 + 7;
-const int INF = 1e9 + 10;
+#ifndef ONLINE_JUDGE
+    #include "debug.h"
+#else
+    #define dbg(x...)
+#endif
 
-int main(){
+#define int long long int
+
+void solve() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<int> a(n + 1);
+    vector<int> b(n + 1);
+    for(int i = 1; i <= n; i++) {
+        cin >> a[i];
+        b[a[i]] = i;
+    }
+
+    int ans = 1;
+    for(int i = 1; i < n; i++) {
+        if(b[i] > b[i + 1]) ans++;
+    }
+    int l, r;
+    set<pair<int, int>> s;
+    for(int i = 0; i < n; i++) {
+        cin >> l >> r;
+
+        if(a[l] + 1 <= n)
+    }
+}
+
+int32_t main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n, m;
-    cin >> n >> m;
-    vector<pair<int, int>> a(n);
-    for(int i = 0; i < n; i++) {
-        int t;
-        cin >> t;
-        a[i] = {t, i};
-    }
-    sort(a.begin(), a.end());
-    //Swapping will only affect it's adjacent elements 
-    while(m--) {
-        int a, b;
-        cin >> a >> b;
-
-        ll ans = 1, curr = a[0].second;
-        for(int i = 0; i < n; i++) {
-            if(a[i].second < curr) ans++;
-            curr = a[i].second;
-        }
-
-        cout << ans << endl;
+    int t = 1;
+    // cin >> t;
+    while(t--) {
+        solve();
     }
 }

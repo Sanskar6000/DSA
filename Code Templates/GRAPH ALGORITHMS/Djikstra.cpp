@@ -1,9 +1,11 @@
+//Single Source Shortest Path
 //0/1 BFS
 //BFS helps to find shortest distance fro source to node if all weights are equal
+//!Do not process negative edges
 void djikstra() {
-    vector<ll> dis(n + 1, LLONG_MAX);
+    vector<int> dis(n + 1, LLONG_MAX);
     dis[1] = 0;
-    priority_queue<pair<ll ,ll>> pq;
+    priority_queue<pair<int ,int>> pq;
     pq.push({0, 1});
 
     while(!pq.empty()) {

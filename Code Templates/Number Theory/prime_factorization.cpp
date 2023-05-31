@@ -9,7 +9,7 @@ void solve() {
     int x;
     cin >> x;
     if(x == 1) cout << 1 << "\n";
-    else {
+    else {  
         map<int, int> m;
         for(int i = 2; i * i <= x; i++) {
             while(x % i == 0) {

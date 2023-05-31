@@ -9,32 +9,53 @@ using namespace std;
 
 #define int long long int
 
-void solve() {
-    int n, x, p;
-    cin >> n >> x >> p;
+set<string> st;
+int dp[101];
+const int INF = 1e7;
 
-    set<int> s;
-    for(int i = 1; i <= 2 * n; i++) {
-        s.insert((x + i) % n);
-        x += i;
+int solve(string s, int ind, int n) {
+    if(ind == -1) return 0;
+
+    if(dp[ind] != -1) return dp[ind];
+
+    int res = INF;
+    for(int i = 0; i <= ind; i++) {
+        string t = s.substr(i, ind - i + 1);
+        if(st.find(t) != st.end()) {
+            res = min(res, solve(s, i - 1, n));
+        } 
     }
-    dbg(s);
-    for(auto it : s) {
-        if(it == 0) {
-            cout << "YES\n";
-            return;
-        }
-    }
-    cout << "NO\n";
-}
+   
+    res = min(res, 1 + solve(s, ind - 1, n));
+    //    dbg(ind, l, r);
+    // dbg(ind, l, r);
+    // dbg(ind, l);
+    return dp[ind] = res;
+}       
+    
+int minExtraChar(string s, vector<string>& dictionary) {
+    memset(dp, -1, sizeof(dp));
+    int n = s.size();
+
+    for(int i = 0; i < dictionary.size(); i++) {
+        st.insert(dictionary[i]);
+    }    
+
+    return solve(s, n - 1, n);
+}       
 
 int32_t main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t = 1;
-    cin >> t;
-    while(t--) {
-        solve();
+    string s;
+    cin >> s;
+    vector<string> dictionary;
+    string t;
+    while(cin >> t) {
+        dictionary.push_back(t);
     }
+
+    cout <<  minExtraChar(s, dictionary);  
+    // for(auto i : dp) cout << i << ' ';
 }

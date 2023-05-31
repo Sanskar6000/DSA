@@ -10,17 +10,27 @@ using namespace std;
 #define int long long int
 
 void solve() {
-    int n, x, p;
-    cin >> n >> x >> p;
+    int n;
+    cin >> n;
 
-    for(int i = 1; i <= min(2*n, p); i++) {
-        if((x + (i * (i + 1)/2)) % n == 0) {
-            cout <<"YES\n";
-            return;
-        }
-    }
+    int a = 2 * n, b = 2;
+    for(int i = 0; i < n/2; i++) {
+        cout << a << ' ' << b << ' ';
+        a -= 2; b += 2;  
+    } 
 
-    cout << "NO\n";
+    if(n % 2) cout << a - 2 << '\n';
+    else cout << '\n';
+
+    a = 1; b -= 1;
+    for(int i = 0; i < n/2; i++) {
+        cout << a << ' ' << b << ' ';
+        a += 2; b += 2;  
+    } 
+
+    if(n % 2) cout << a + 2 << '\n';
+    else cout << '\n';
+
 }
 
 int32_t main(){
