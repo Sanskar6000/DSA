@@ -1,5 +1,5 @@
 /*
-1. Comparator functions used with sort(a.begin(), a.end(), sort)
+1. Comparator functions used with sort(a.begin(), a.end(), sort) -> for vector
     bool comp(const pair<int,int> &a, const pair<int,int> &b) {
         return (a.second - a.first < b.second - b.first);
     }
@@ -18,4 +18,4 @@
 
 3. auto cmp = [](int a, int b) { return ... };
 std::set<int, decltype(cmp)> s;
-*/
+*/  
