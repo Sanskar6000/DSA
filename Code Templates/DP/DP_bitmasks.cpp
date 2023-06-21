@@ -28,7 +28,8 @@ N <= 20
 */
 
 /*
-dp[i, mask] = min cost to assign to people from 1 to n such that people are represented by mask available
+Brute force will take n! permultations to check
+dp[i, mask] = min cost to assign to people from i to n such that people are represented by mask available
 final ans => dp(1, 111111...1111)
 
 dp[i, mask] = Cij + dp[i + 1, mask|turn off jth bit] for valid j -> jth bit is on

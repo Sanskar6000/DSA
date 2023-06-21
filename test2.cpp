@@ -10,27 +10,9 @@ using namespace std;
 #define int long long int
 
 void solve() {
-    int n;
-    cin >> n;
-
-    int a = 2 * n, b = 2;
-    for(int i = 0; i < n/2; i++) {
-        cout << a << ' ' << b << ' ';
-        a -= 2; b += 2;  
-    } 
-
-    if(n % 2) cout << a - 2 << '\n';
-    else cout << '\n';
-
-    a = 1; b -= 1;
-    for(int i = 0; i < n/2; i++) {
-        cout << a << ' ' << b << ' ';
-        a += 2; b += 2;  
-    } 
-
-    if(n % 2) cout << a + 2 << '\n';
-    else cout << '\n';
-
+    vector<int> a = {0,1,3,5,6,8,12,17};
+    auto ind = lower_bound(a.begin(), a.end(), 18) - a.begin();
+    cout << ind << '\n';
 }
 
 int32_t main(){
@@ -38,7 +20,7 @@ int32_t main(){
     cin.tie(NULL);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--) {
         solve();
     }

@@ -5,17 +5,18 @@
     }
 
     lambda function:
-    auto comp = [](int& a, int& b){ return freq[a] < freq[b] };
+    auto comp = [](const int& a, const int& b){ return freq[a] < freq[b] };
 
 2. Class comparator overloading the operator (Only used for set, map, priority_queue, multimap and multiset)
     priority_queue<int, vector<int>, comp> pq;
 
     class comp {
-        bool operator()(int a, int b) {
+        public:
+        bool operator()(const int &a, const int &b) {
             
         } 
     } 
 
-3. auto cmp = [](int a, int b) { return ... };
+3. auto cmp = [](int a, int b) { return ... }; -> Here a and b are passed by value
 std::set<int, decltype(cmp)> s;
 */  

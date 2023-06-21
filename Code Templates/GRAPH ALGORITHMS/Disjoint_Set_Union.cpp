@@ -1,5 +1,4 @@
 //LogN per query
-
 void make_set(int v) {
     parent[v] = v;
 }

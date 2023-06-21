@@ -8,30 +8,27 @@ using namespace std;
 #else
     #define dbg(x...)
 #endif
+   int n, m;
+vector<int> vis, color;
+ 
+bool dfs(int node, vector<int> adj[]) {
+    if(color[node] == 0) color[node] = 1;
 
-int n, m;
-vector<int> vis, ans;
- 
-bool dfs(int node, vector<int> adj[], int color, int par) {
-    vis[node] = 1;
-    ans[node] = color;
     for(auto it : adj[node]) {
-      
-            if(it == par) continue;
-            if(ans[it] == 0) {
-                if(!dfs(it, adj, ans[node] ^ 3, node)) return false;
-            }
-            if(ans[node] == ans[it]) return false;
-        
+        if(color[it] == 0) {
+            color[it] = color[node] ^ 3;
+
+            if(!dfs(it, adj)) return false;
+        }
+        else if(color[it] == color[node]) return false;
     }
- 
     return true;
 }
  
 bool color_all(vector<int> adj[]) {
     for(int i = 1; i <= n; i++) {
         if(!vis[i]) {
-            if(!dfs(i, adj, 1, -1)) {
+            if(!dfs(i, adj)) {
                 return false;
             }
         }
@@ -44,7 +41,7 @@ void solve() {
  
     cin >> n >> m;
     vis.resize(n + 1);
-    ans.resize(n + 1);
+    color.resize(n + 1);
     vector<int> adj[n + 1];
     for(int i = 0; i < m; i++) {
         int u, v;
@@ -54,7 +51,7 @@ void solve() {
         adj[v].push_back(u);
     }
     if(color_all(adj)) {
-        for(int i = 1; i <= n; i++) cout << ans[i] << ' ';
+        for(int i = 1; i <= n; i++) cout << color[i] << ' ';
     }
     else cout << "IMPOSSIBLE";
  
