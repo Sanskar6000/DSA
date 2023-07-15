@@ -10,9 +10,7 @@ using namespace std;
 #define int long long int
 
 void solve() {
-    vector<int> a = {0,1,3,5,6,8,12,17};
-    auto ind = lower_bound(a.begin(), a.end(), 18) - a.begin();
-    cout << ind << '\n';
+    cout << ceil((double)5/3) << '\n';
 }
 
 int32_t main(){
@@ -20,7 +18,7 @@ int32_t main(){
     cin.tie(NULL);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while(t--) {
         solve();
     }

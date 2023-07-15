@@ -37,6 +37,7 @@ dp[i, mask] = Cij + dp[i + 1, mask|turn off jth bit] for valid j -> jth bit is o
 Space Complexity: O(N * 2^N)
 Time Complexity: O(N^2 * 2^N)
 */
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -61,7 +62,7 @@ int helper(int i, int mask) {
 
     for(int j = 0; j < n; j++) {
         if(mask & (1 << j))
-            ans = min(ans, cost[j][i] + helper(i + 1, (mask^(1 << j))));
+            ans = min(ans, cost[j][i] + helper(i + 1, (mask | (1 << j)))); //xor or or? if my mask is 11111 I need xor to make it visited
     }
 
     return dp[i][mask] = ans;

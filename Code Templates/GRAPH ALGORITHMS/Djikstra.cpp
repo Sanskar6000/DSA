@@ -13,7 +13,11 @@ void djikstra() {
         int distance = -pq.top().first;
         pq.pop();
 
+        //using visited array will result in less time complexity 
+        // if(vis[x][y]) continue;
+        // vis[x][y] = 1;
         if(dis[node] < distance) continue;
+
 
         for(auto it : adj[node]) {
             int curr_node = it.first, d = it.second;
