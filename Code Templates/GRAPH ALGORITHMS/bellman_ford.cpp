@@ -1,10 +1,14 @@
 //Single Source Shortest Path
 //!Works for negative edges
-//The longest possible path in any single source shortest path is n - 1 edges
+//The longest possible path in any single source shortest path is n - 1 edges when we perform n - 1
+//relaxations we ensure that we have covered all the edges and shortest path is considered for our source and node
+
 //In case of no negative cycles, there won't be a need to revisit a node
 //When there is negative weight cycle distance will be -INF
 //If we perform n - 1 propogations along all E edges, propogation is complete. We have Single Source Shortest Paths
 //Exceptions Exists
+
+//Belman ford only works for directed graphs if it undirected graph convert it to directed graph be keeping edges from both sides
 
 //Algo
 //Relax all edges 'n - 1' times

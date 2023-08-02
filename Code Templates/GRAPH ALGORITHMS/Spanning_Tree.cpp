@@ -27,12 +27,14 @@ void prims() {
         sum += distance;
         for(auto it : adj[node]) {
             int curr_node = it.first, d = it.second;
+            //major difference between Djikstra and prims
             if(!vis[curr_node]) pq.push({-d, curr_node});
         }
     }
 }
 
 //Kruskal's Algorithm -> O(M * logN)
+//Sort edges according to wt merge them
 vector<int> parent, rank;
 
 void make_set(int v) {

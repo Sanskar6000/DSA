@@ -10,7 +10,11 @@ using namespace std;
 #define int long long int
 
 void solve() {
-    cout << ceil((double)5/3) << '\n';
+    set<int> s;
+    s.insert(1);
+    set<int>::iterator it = s.upper_bound(3);
+    if(it == s.end()) cout << "YES";
+    else cout << "NO\n";
 }
 
 int32_t main(){
@@ -18,7 +22,7 @@ int32_t main(){
     cin.tie(NULL);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--) {
         solve();
     }

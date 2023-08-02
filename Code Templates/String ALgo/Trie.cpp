@@ -9,7 +9,7 @@ public:
     //Constructor
     TrieNode() {
         wordCount = 0;
-        memset(children, 0, sizeof(children));
+        memset(children, NULL, sizeof(children));
     }
 };
 
