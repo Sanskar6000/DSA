@@ -55,7 +55,7 @@ ll merge(vector<ll> &a, int l, int mid, int r) {
 ll mergeSort(vector<ll> &a, int l, int r) {
     ll cnt = 0;
 
-    if(r > l) {
+    if(l < r) {
         ll mid = (l + r)/2;
         cnt += mergeSort(a, l, mid);
         cnt += mergeSort(a, mid + 1, r);
