@@ -30,7 +30,9 @@ void union_sets(int a, int b) {
     if(a != b) {
         if(sz[a] < sz[b])
             swap(a, b);
+        //assuming b is small
         parent[b] = a;
+        //small is added in larger one
         sz[a] += sz[b];
     }
 }

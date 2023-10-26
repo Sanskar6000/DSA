@@ -48,3 +48,8 @@ void phi_1_to_n(int n) {
         }
     }
 }
+
+
+// Euler Totient Function and GCD Sum
+ans = Summation(gcd(i, n))
+

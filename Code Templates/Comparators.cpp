@@ -21,3 +21,7 @@
 3. auto cmp = [](const int &a,const int &b) { return ... }; -> Here a and b are passed by value
 std::set<int, decltype(cmp)> s;
 */  
+
+string s;
+getline(cin, s);
+cout << s;

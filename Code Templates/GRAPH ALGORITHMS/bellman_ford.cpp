@@ -54,7 +54,7 @@ void bellman_ford() {
         for(auto e : edges) {
             int u = e.first;
             int v = e.second;
-            inr d = e.third;
+            int d = e.third;
             if(dis[u] == INF) continue;
             dis[v] = max(dis[v], NINF);
             //Relaxations after 'n - 1' cycles -> negative cycles

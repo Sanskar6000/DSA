@@ -41,6 +41,7 @@ async function getTotalGoals(team, year) {
 
 
 // Fetch request
+//eg. method = 'GET'
 // fetch(apiUrl, {
 //     method: method,
 //     headers: headers,

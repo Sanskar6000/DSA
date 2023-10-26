@@ -4,6 +4,11 @@
 // the greater ones to its right.
 
 //Pick a Pivot and elements smaller than pivot will be on the left of pivot and elements larger will be on the right of pivot
+
+//Time Complexity Analaysis
+//1. Always partition in middle -> O(N * logN) --> Pivot should be median
+//2. If list is already sorted -> Partition will be happening in the beginning of list -> O(N^2)
+//3. Select Middle element as Pivot, Select Random element as Pivot
 void quickSort(int arr[], int low, int high)
     {
         if(low < high) {
